@@ -11,21 +11,30 @@
             #main {
                 text-align: center;
                 position: fixed;
-                top: 0;
                 background-color: lightgray;
-                height: 10%;
+                height: 5%;
                 width: 100%;
                 padding: 0;
                 margin: 0;
             }
-            input[type="button"], input[type="checkbox"] {
+            input {
+                margin-top: 5px;
+                font-size: 16px;
+            }
+            input[type="button"] {
+                background: black;
+                color: white;
+                border-radius: 10px;
+                cursor: pointer;
+            }
+            input[type="checkbox"] {
                 cursor: pointer;
             }
             iframe {
                 position: fixed;
                 bottom: 0;
                 width: 100%;
-                height: 90%!important;
+                height: 95%!important;
             }
         </style>
     </head>
@@ -34,7 +43,7 @@
             <div id="main">
                 <input type="button" id="back" value="<< Back"> 
                 <input type="button" id="forv" value="Forv >>">
-                <input type="text" id="size" value="http://">
+                <input type="text" id="link" value="https://www.example.com/">
                 <input type="button" id="open" value="Открыть">
                 <input type="checkbox" id="new" name="new"> <label for="new">в новом окне</label>
             </div>
@@ -42,9 +51,23 @@
         
         <script>
             "use strict";
-            
+            const openLink = document.getElementById('open');
+            const inLink = document.getElementById('link');
+            const goBack = document.getElementById('back');
+            const goForward = document.getElementById('forv');
+
+            openLink.onclick = () => {
+                let Link = inLink.value;
+                document.getElementById('iframe').src = Link;
+            }
+            goBack.onclick = () => {
+                window.history.back();
+            }
+            goForward.onclick = () => {
+                window.history.forward();
+            }
         </script>
     </body>
-    <iframe src="https://www.example.com/"></iframe>
+    <iframe id="iframe" src="https://www.example.com/"></iframe> <!--многие сайты блокируют фрейминг-->
     <!--https://www.youtube.com/watch?v=37q6IwGaAvw&ab_channel=WhereCodingStarts-->
 </html>
