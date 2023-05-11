@@ -41,8 +41,8 @@
     <body>
         <form>
             <div id="main">
-                <input type="button" id="back" value="<< Back"> 
-                <input type="button" id="forv" value="Forv >>">
+                <input type="button" id="back" onclick="history.back();" value="<"> 
+                <input type="button" id="forv" onclick="history.forward();"value=">">
                 <input type="text" id="link" value="https://www.example.com/">
                 <input type="button" id="open" value="Открыть">
                 <input type="checkbox" id="new" name="new"> <label for="new">в новом окне</label>
@@ -53,21 +53,17 @@
             "use strict";
             const openLink = document.getElementById('open');
             const inLink = document.getElementById('link');
-            const goBack = document.getElementById('back');
-            const goForward = document.getElementById('forv');
+            const inNew = document.getElementById('new');
 
             openLink.onclick = () => {
                 let Link = inLink.value;
-                document.getElementById('iframe').src = Link;
-            }
-            goBack.onclick = () => {
-                window.history.back();
-            }
-            goForward.onclick = () => {
-                window.history.forward();
+                if (inNew.checked == true) {
+                    window.open(Link, "_blank");
+                } else {
+                    document.getElementById('iframe').src = Link;
+                }
             }
         </script>
+    <iframe id="iframe" src="https://www.example.com/"></iframe> <!--многие сайты блокируют фрейминг-->    
     </body>
-    <iframe id="iframe" src="https://www.example.com/"></iframe> <!--многие сайты блокируют фрейминг-->
-    <!--https://www.youtube.com/watch?v=37q6IwGaAvw&ab_channel=WhereCodingStarts-->
 </html>
