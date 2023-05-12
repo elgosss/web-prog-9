@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Задание 1</title>
+        <style>
+            input[type="button"] {
+                background: #9ec3e5;
+                color: white;
+                cursor: pointer;
+                font-size: 20px;
+                height: 40px;
+                margin-top: 0;
+                margin-left: 0;
+                border: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <div id="main">
+                <input type="button" id="btn" value="Наведись на меня">
+            </div>
+        </form>
+        
+        <script>
+            "use strict";
+            const btn = document.getElementById('btn');
+            btn.addEventListener('mouseover', () => {
+                btn.style.display = 'none';
+                setTimeout(() => {
+                    function getRandomInt(max) {
+                    return Math.floor(Math.random() * max);
+                    }
+                    btn.style.marginTop = getRandomInt(document.documentElement.clientHeight - btn.style.height) + 'px';
+                    btn.style.marginLeft = getRandomInt(document.documentElement.clientWidth - btn.style.width) + 'px';
+                    btn.style.display = 'block';
+                }, 3000, btn)
+            })
+        </script>
+    </body>
+</html>
