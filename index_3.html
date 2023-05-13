@@ -41,8 +41,8 @@
 
                 let coordField = this.getBoundingClientRect();     // координаты поля
 
-                x = x - coordField.x - field.clientLeft;
-                y = y - coordField.y - field.clientTop;
+                x = x - coordField.x;
+                y = y - coordField.y;
 
                 let coordFieldX_left  = ball.offsetWidth / 2,
                     coordFieldY_left  = ball.offsetHeight / 2,
