@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Задание 4</title>
+        <style>
+            #circle {
+                left: 0;
+                top: 0;
+                position: absolute;
+                width: 50px; 
+                height: 50px;
+                background-color: #9ec3e5;
+                border-radius: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="circle"></div>
+        
+        <script>
+            var circle = document.getElementById("circle"),
+                timer;
+                
+            function spin(event) { 
+                clearInterval(timer);
+                var r = 50,
+                    speed = 5;
+                var f = 0;
+                var s = 2 * Math.PI / 180; //Вычислим угол
+                var X = event.clientX;
+                var Y = event.clientY;
+                timer = setInterval(function() { 
+                    f += s; // приращение аргумента
+                    circle.style.left = X - 20 + r * Math.sin(f)  + 'px';
+                    circle.style.top = Y - 20 + r * Math.cos(f) + 'px';
+                }, speed)
+            }
+            window.onmousemove = spin;
+        </script>
+    </body>
+</html>
